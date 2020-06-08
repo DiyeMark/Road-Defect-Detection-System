@@ -1,2 +1,2 @@
 # Road-Defect-Detection-System
-A road defect detection system for Addis Ababa, Ethiopia
+A Road Defect Detection System for Addis Ababa, Ethiopia
