@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+
+{% set active_page = "index" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block onlyAdmin %}
+    {% if isAdmin == 1 %}
+        <li class="menu-heading">
+          <h3>User Management</h3>
+        </li>
+        <li class="{{ 'active' if active_page == 'users' else '' }}">
+          <a href="/users">
+            <svg width="2048" height="1792" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg"><path d="M657 896q-162 5-265 128h-134q-82 0-138-40.5t-56-118.5q0-353 124-353 6 0 43.5 21t97.5 42.5 119 21.5q67 0 133-23-5 37-5 66 0 139 81 256zm1071 637q0 120-73 189.5t-194 69.5h-874q-121 0-194-69.5t-73-189.5q0-53 3.5-103.5t14-109 26.5-108.5 43-97.5 62-81 85.5-53.5 111.5-20q10 0 43 21.5t73 48 107 48 135 21.5 135-21.5 107-48 73-48 43-21.5q61 0 111.5 20t85.5 53.5 62 81 43 97.5 26.5 108.5 14 109 3.5 103.5zm-1024-1277q0 106-75 181t-181 75-181-75-75-181 75-181 181-75 181 75 75 181zm704 384q0 159-112.5 271.5t-271.5 112.5-271.5-112.5-112.5-271.5 112.5-271.5 271.5-112.5 271.5 112.5 112.5 271.5zm576 225q0 78-56 118.5t-138 40.5h-134q-103-123-265-128 81-117 81-256 0-29-5-66 66 23 133 23 59 0 119-21.5t97.5-42.5 43.5-21q124 0 124 353zm-128-609q0 106-75 181t-181 75-181-75-75-181 75-181 181-75 181 75 75 181z"/></svg>
+            <span>Users</span>
+          </a>
+        </li>
+        {#<li class="{{ 'active' if active_page == 'add_user' else '' }}">
+          <a href="/add_user">
+            <svg width="2048" height="1792" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg"><path d="M704 896q-159 0-271.5-112.5t-112.5-271.5 112.5-271.5 271.5-112.5 271.5 112.5 112.5 271.5-112.5 271.5-271.5 112.5zm960 128h352q13 0 22.5 9.5t9.5 22.5v192q0 13-9.5 22.5t-22.5 9.5h-352v352q0 13-9.5 22.5t-22.5 9.5h-192q-13 0-22.5-9.5t-9.5-22.5v-352h-352q-13 0-22.5-9.5t-9.5-22.5v-192q0-13 9.5-22.5t22.5-9.5h352v-352q0-13 9.5-22.5t22.5-9.5h192q13 0 22.5 9.5t9.5 22.5v352zm-736 224q0 52 38 90t90 38h256v238q-68 50-171 50h-874q-121 0-194-69t-73-190q0-53 3.5-103.5t14-109 26.5-108.5 43-97.5 62-81 85.5-53.5 111.5-20q19 0 39 17 79 61 154.5 91.5t164.5 30.5 164.5-30.5 154.5-91.5q20-17 39-17 132 0 217 96h-223q-52 0-90 38t-38 90v192z"/></svg>
+            <span>Add User</span>
+          </a>
+        </li>#}
+        <li class="{{ 'active' if active_page == 'invite_user' else '' }}">
+          <a href="/invite_user">
+            <svg width="2048" height="1792" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg"><path d="M704 896q-159 0-271.5-112.5t-112.5-271.5 112.5-271.5 271.5-112.5 271.5 112.5 112.5 271.5-112.5 271.5-271.5 112.5zm960 128h352q13 0 22.5 9.5t9.5 22.5v192q0 13-9.5 22.5t-22.5 9.5h-352v352q0 13-9.5 22.5t-22.5 9.5h-192q-13 0-22.5-9.5t-9.5-22.5v-352h-352q-13 0-22.5-9.5t-9.5-22.5v-192q0-13 9.5-22.5t22.5-9.5h352v-352q0-13 9.5-22.5t22.5-9.5h192q13 0 22.5 9.5t9.5 22.5v352zm-736 224q0 52 38 90t90 38h256v238q-68 50-171 50h-874q-121 0-194-69t-73-190q0-53 3.5-103.5t14-109 26.5-108.5 43-97.5 62-81 85.5-53.5 111.5-20q19 0 39 17 79 61 154.5 91.5t164.5 30.5 164.5-30.5 154.5-91.5q20-17 39-17 132 0 217 96h-223q-52 0-90 38t-38 90v192z"/></svg>
+            <span>Invite User</span>
+          </a>
+        </li>
+
+        <li class="menu-heading">
+            <h3>Device Management</h3>
+        </li>
+        <li class="{{ 'active' if active_page == 'device' else '' }}">
+          <a href="/device">
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 211.617 211.617" style="enable-background:new 0 0 211.617 211.617;" xml:space="preserve">
+<path d="M56.283,155.334h99.051V56.283H56.283V155.334z M76.283,76.283h59.051v59.051H76.283V76.283z M0,145.809v20h20.809v25h25
+	v20.809h20v-20.809h30v20.809h20v-20.809h30v20.809h20v-20.809h25v-25h20.809v-20h-20.809v-30h20.809v-20h-20.809v-30h20.809v-20
+	h-20.809v-25h-25V0h-20v20.809h-30V0h-20v20.809h-30V0h-20v20.809h-25v25H0v20h20.809v30H0v20h20.809v30H0z M40.809,40.809h130v130
+	h-130V40.809z"/>
+</svg>
+            <span>Device</span>
+          </a>
+        </li>
+    {% else %}
+        {{ super() }}
+    {% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+<button class="btnlogout btn--radius-2 btn--blue">
+    <a href="/logout">
+    <div class="user-profile">
+      <span class="greeting">Logout ({{ username }})</span>
+        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+    </div>
+</a>
+</button>
+<div class="graph-container">
+	<canvas id="myPieChart"></canvas>
+</div>
+
+<div class="graph-container">
+	<canvas id="myBarChart"></canvas>
+</div>
+<script>
+    // let myChart = document.getElementById('myChart').getContext('2d');
+
+    var roadConditionPieCanvas = document.getElementById("myPieChart").getContext('2d');
+    var roadConditionBarCanvas = document.getElementById("myBarChart").getContext('2d');
+
+    Chart.defaults.global.defaultFontFamily = "Lato";
+    Chart.defaults.global.defaultFontSize = 18;
+
+    var goodRoadData = {
+      label: 'Good Road(Km)',
+      data: [50, 45, 37, 10, 20],
+      backgroundColor: 'rgba(0, 204, 102, 1.0)',
+      borderWidth: 0,
+      // yAxisID: "y-axis-goodroad"
+    };
+
+    var badRoadData = {
+      label: 'Bad Road(Km)',
+      data: [15, 13, 10, 3, 5],
+      backgroundColor: 'rgba(255, 64, 92, 1.0)',
+      borderWidth: 0,
+      // yAxisID: "y-axis-badroad"
+};
+
+
+    var roadConditionData = {
+      labels: ['Dec 16', 'Dec 17', 'Dec 18', 'Dec 19', 'Dec 20'],
+      datasets:[goodRoadData, badRoadData]
+    };
+
+
+    var chartOptions = {
+      scales: {
+        xAxes: [{
+          barPercentage: 1,
+          categoryPercentage: 0.6
+        }],
+        yAxes: [{
+            // stacked: true,
+            barPercentage: 1,
+            categoryPercentage: 0.6
+        }]
+      },
+    title: {
+       display:true,
+       text: 'Distance Covered',
+       fontSize: 25,
+       center: true
+           },
+    layout:{
+           padding: 20
+        }
+    };
+
+    var barChart = new Chart(roadConditionBarCanvas, {
+      type: 'bar',
+      data: roadConditionData,
+      options: chartOptions
+});
+
+    let roadConditionPieChart = new Chart(roadConditionPieCanvas, {
+       type: 'pie',
+       data: {
+           labels: ['Good Road(%)', 'Bad Road(%)'],
+           datasets: [{
+               label: "Road Condtion",
+               data: [
+                   80,
+                   20
+               ],
+               backgroundColor:[
+                    'rgba(0, 204, 102, 1.0)',
+                    'rgba(255, 64, 92, 1.0)'
+               ],
+               borderWidth: 0,
+               {#borderColor: '#777',#}
+               {#hoverBorderwidth: 3,#}
+               {#hoverBorderColor: '#000'#}
+           }]
+       },
+        options: {
+           title: {
+               display:true,
+               text: 'Total Survey',
+               fontSize: 25,
+               center: true
+           },
+            legend:{
+               onClick: null
+               // position: 'right'
+            },
+            layout:{
+               padding: {
+                   left: 0,
+                   right: 0,
+                   top: 0,
+                   bottom: 20
+               }
+            }
+        }
+    });
+</script>
+
+{% endblock %}

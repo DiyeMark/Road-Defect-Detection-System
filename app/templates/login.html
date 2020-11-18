@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/fonts/iconic/css/material-design-iconic-font.min.css">
+</head>
+<body>
+    <div class="container-login" style="background-image: url('./static/img/addis-ababa.jpg')">
+        <div class="wrap-login">
+            <form method=POST class="login-form" action="{{ url_for('login') }}">
+                {{ form.hidden_tag() }}
+                <span class="login-form-logo">
+                    <i class="zmdi zmdi-account"></i>
+                </span>
+                <span class="login-form-title">Log In</span>
+                <div class="wrap-input">
+                    <!--<input class="input-login" type="text" name="username" placeholder="Username">-->
+                    <!--<span class="focus-input" data-placeholder=""></span>-->
+
+                    {% if form.username.errors %}
+                        {{ form.username(class="input-login") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username(class="input-login") }}
+                        <span class="focus-input" data-placeholder=""></span>
+                    {% endif %}
+                </div>
+                <div class="wrap-input">
+                    <!--<input class="input-login" type="password" name="password" placeholder="Password">-->
+                    <!--<span class="focus-input" data-placeholder=""></span>-->
+                    {% if form.password.errors %}
+                        {{ form.password(class="input-login") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="input-login") }}
+                        <span class="focus-input" data-placeholder=""></span>
+                    {% endif %}
+                </div>
+                <!--<div class="contact-form-checkbox">-->
+                    <!--<input class="input-checkbox" id="ckb1" type="checkbox" name="remember-me">-->
+                    <!--<label class="label-checkbox">-->
+							<!--Remember me-->
+						<!--</label>-->
+                <!--</div>-->
+                <div class="container-login-form-btn">
+                    <!--<button class="login-form-btn">Login</button>-->
+                    {{ form.submit(class="login-form-btn")}}
+                </div>
+                <!--<div class="text-center">-->
+						<!--<a class="txt1" href="#">-->
+							<!--Forgot Password?-->
+						<!--</a>-->
+					<!--</div>-->
+            </form>
+        </div>
+    </div>
+</body>
+</html>
